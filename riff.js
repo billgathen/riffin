@@ -8,9 +8,14 @@ new Board().on('ready', function() {
     board: this
   });
 
+  // Create a new riff with a tempo
   var ironMan = new Riff({ bpm: 120 });
+  // Load a track
   ironMan.tracks.push({
+    // the device it will control
     output: piezo,
+    // A note contains a pitch and # of beats
+    // Anything that's not a valid pitch becomes a rest ('', ' ', 'rest', etc)
     notes:  [ ['e', 2], ['g', 2], ['g', 1], ['a', 1], ['a', 1], ['', 1] ]
   });
 
@@ -18,19 +23,19 @@ new Board().on('ready', function() {
   chromatic.tracks.push({
     output: piezo,
     notes: [
-      ['c', 1],
+      ['c',  1],
       ['c#', 1],
-      ['d', 1],
+      ['d',  1],
       ['d#', 1],
-      ['e', 1],
-      ['f', 1],
+      ['e',  1],
+      ['f',  1],
       ['f#', 1],
-      ['g', 1],
+      ['g',  1],
       ['g#', 1],
-      ['a', 1],
+      ['a',  1],
       ['a#', 1],
-      ['b', 1],
-      ['C', 1]
+      ['b',  1],
+      ['C',  1]
     ]
   });
 
@@ -49,6 +54,10 @@ new Board().on('ready', function() {
     ]
   });
 
+  // Tell a riff to play itself
+  ironMan.play();
+
+  // Jukebox! Make a request
   board.repl.inject({
     ironMan: ironMan,
     chromatic: chromatic,
