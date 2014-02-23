@@ -6,6 +6,11 @@ var Riff = function (opts) {
   this.tracks = [];
 }
 
+// Pitches based on reference notes from http://www.phy.mtu.edu/~suits/notefreqs.html
+// converted using:
+// function piezoTimeHighFromFrequency (freq) {
+//   return Math.floor(1000000 / (2 * freq));
+// }
 Riff.prototype.pitchFor = function(note) {
   var convert = {
     "c": 1915,
